@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="static\cards.css" rel="stylesheet">
+    <title>Bootcamp</title>
+    <style>
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background-color: #333;
+        }
+        
+        li {
+          float: left;
+          border-right:1px solid #bbb;
+        }
+        
+        li:last-child {
+          border-right: none;
+        }
+        
+        li a {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+        
+        li a:hover:not(.active) {
+          background-color: #111;
+        }
+        
+        .active {
+          background-color: #04AA6D;
+        }
+
+        img{
+            width: 20%
+        }
+        </style>
+</head>
+<body>
+    <ul>
+        <li><a class="active" href="/home">Home</a></li>
+        <li><a href="/bookings">bookings</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li style="float:right"><a href="/about">About</a></li>
+    </ul>
+
+    <form id="demo" name ="demo" action="/filter" method="POST">
+      <select name="filterOptions">
+        <option value="title">title</option>
+        <option value="genre">genre</option>
+        <option value="rating">rating</option>
+      </select>
+      <input type="text" name="searchKey" placeholder="search">
+      <input type="submit" value="submit">
+    </form>
+
+
+    <h2>Top Movies</h2>
+    <!-- we have to repeat line 85 here to see without bootstrap and add for loop-->
+    {{ show.title }}
+    <p>{{ show.rating }}</p>
+    <img src = {{ show.poster }} ><br>
+    <!--Genres:--> {% for i in show.genre %}
+    {{ i.type }}<br>
+    {% endfor %}
+    {% for i in show.venues %}
+    Venues : {{ i.name }}<br>
+    {% endfor %}
+    
+
+    <!-- <div>this is how you style the above code using css and jinja templating</div> -->
+  
+
+    <div class="container">
+      <div class="row">
+          {% for item in show %}
+          <div class="col-md-2">
+              <div id="card-1" style="background-image:url('{{ item.poster }}') ;">
+                  <div class="shadow">
+                      <h5>{{item.title}}</h5>
+                      <h5>Rating: {{ item.rating }} /10</h5>
+                  </div>
+              </div>
+          </div> 
+          {% endfor %} 
+      </div>
+  </div>
+  </script>
+  
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
